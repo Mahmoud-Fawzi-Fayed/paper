@@ -1,0 +1,11 @@
+8 jobs
+[1/8] fmnist s1_0.1 fedfacs seed=0_dist done in 366s (elapsed 6.1 min)
+[2/8] fmnist s2 fedfacs seed=0_dist done in 352s (elapsed 12.0 min)
+[3/8] cifar10 s1_0.1 fedfacs seed=0_dist done in 302s (elapsed 17.0 min)
+[4/8] cifar10 s2 fedfacs seed=0_dist done in 294s (elapsed 21.9 min)
+[5/8] fmnist s1_0.1 fedfacs seed=1_dist done in 349s (elapsed 27.7 min)
+[6/8] fmnist s2 fedfacs seed=1_dist done in 354s (elapsed 33.6 min)
+[7/8] cifar10 s1_0.1 fedfacs seed=1_dist done in 319s (elapsed 38.9 min)
+[8/8] cifar10 s2 fedfacs seed=1_dist done in 316s (elapsed 44.2 min)
+FAILED JOBS: []
+ALL DONE

@@ -1,0 +1,4 @@
+{"rounds": 100, "epochs": 2, "datasets": ["fmnist", "mnist", "cifar10"],
+ "scenarios": ["s1_0.1", "s1_0.5", "s2"],
+ "methods": ["random", "fedprox", "powd", "divfl", "oort", "fednova", "qffl", "fedfacs"],
+ "seeds": [0, 1, 2, 3, 4], "tag": "", "extra": {"diag_rounds": [1, 5, 10, 25, 50, 100]}}

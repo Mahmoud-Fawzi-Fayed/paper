@@ -1,0 +1,138 @@
+FedFACS: Replacements 9 and 10 (server procedure and commit; resource, fairness and classification metrics)
+Scope. Replacement 9 covers the server-side procedure after aggregation (validation, staging and commit of the state, Eq. (19)) and Algorithm 2; Replacement 10 covers the metric definitions (Eqs. (20)-(25)), the communication accounting (new Eq. (23a)) and the reading of the fairness index. Locations refer to the original sn-article.tex. Evidence comes from our reproduced runs (ResNet-18 with frozen early layers, 100 clients, 100 rounds, five seeds; 689 runs in total); the manuscript must state that its numbers come from this implementation. Colours: red = removed, green = added.
+NEW ELEMENTS. The original paper has no Eq. (23a), no Section 5.4 and no Tables V, U, T and S. They are new: the paragraphs and tables are in part 3 of this file (insert them in Section 5.4, after the paragraph on participation and aggregation influence; Section 5.4 itself is inserted at the end of Section 5, before the Conclusion, as described in the Replacement 5 file). Table 4 of the original paper is not changed here: its recall and F1 values are reconciled in Replacement 11.
+1. What each comment receives: fix, location, evidence, declaration
+Replacement 9. R1-01 and R2-03: when the counters are updated
+Fix: The server stages the idle counters of Eq. (7) together with the model and the feedback state after the aggregation and commits them in one step; a cancelled round leaves the counters unchanged. The counter is read at selection time from the committed state, so that its initialisation, update timing and population mean (Eq. (19), with the population size N) are fixed.
+Where: Section 4.2, paragraph after the aggregation and Eq. (19); Algorithm 2, lines 9 and 10.
+Evidence: Table S: in all 251 runs of FedFACS and its variants the selection counts and the longest wait, recomputed from the per-round selections, equal the logged values; the 13 unit tests of the equations pass, among them the increment and the reset of the idle counter.
+Declaration: The counter has one specified update time and the logs reproduce it.
+Replacement 9. R2-08: time indexing and notation
+Fix: After round t the server computes the reduction of the validation loss, the reference rate and the deviation signal for the next round (Eqs. (15), (11), (10)) from completed rounds only; the next selection uses the committed values. The population size is N throughout (the symbols K and C of the original are removed) and Eq. (19) averages the counters of round t+1 over N clients.
+Where: Section 4.2, Eq. (19) and the paragraph above it; Algorithm 2, inputs and lines 9 to 11.
+Evidence: The reference trajectory uses only past rounds (unit test); the cohort size is within its bounds in every logged round of the 251 runs (Table S).
+Declaration: Every quantity used in round t is computed in an earlier committed round.
+Replacement 9. R1-21: one consistent and executable account
+Fix: Algorithm 2 lists the received information (scores, models, stability scores, sample counts), the cohort size from the previous round, the selection with the waiting-time guard, the aggregation with the weights of Eq. (18), the validation, the update of the control state and the counters, the commit and the broadcast to the N candidates, in the order of the text. In a deployment, messages carry run and round identifiers and duplicates or stale messages are rejected. The restriction of the privacy and scalability statements is in the paragraph on the operating assumptions of Section 4.3.
+Where: Algorithm 2 (inputs, outputs, lines 1 to 11) and the paragraph that describes it, Section 4.2; Section 4.3, operating assumptions.
+Evidence: Table S: the logged cohorts, selection counts, waiting times and uploaded volumes are consistent in all 251 runs; no round was cancelled and no update was non-finite in the 689 runs. The messages with identifiers describe a deployment; the simulation is synchronous and does not exercise them.
+Declaration: The procedure of the server follows the equations and can be executed in the stated order.
+Replacement 10. R1-08 and R2-01: the communication model and the hidden costs
+Fix: Eq. (23) counts the uploaded updates over the first T rounds. Eq. (23a) adds the downloads, the auxiliary traffic and the setup, calibration and final-model traffic, over all attempted rounds. Local training steps, scoring forward passes and elapsed time are reported separately. The text states that the saving of FedFACS is in the uploaded updates, while every candidate receives and trains the model.
+Where: Section 5.1, performance metrics (Eqs. (23), (23a)); Section 5.4, Communication and computation cost and Table V.
+Evidence: Table V (45 runs per method): FedFACS downloads to and trains all 100 candidates, 10.0 times the local steps of random sampling; its uploads are 9.71 per round against 10; to the common target it uploads 6.2% fewer updates than random sampling but transmits 198 against 37 GB in total.
+Declaration: The total communication, the local computation and the uploads are measured under one explicit model, and the claim is limited to the uploads.
+Replacement 10. R1-09 and R2-15: what the Jain index measures
+Fix: The index of Eq. (24) is read as the equality of the quality-adjusted participation; with q equal to one it is the equality of participation. Three notions are distinguished: equality of participation, participation proportional to quality, and fairness of the outcome (client-level accuracy). The interpretation of 0.5 as a boundary is removed; the minimum is 1/N and a value between 0.5 and 1 does not imply that every client participates. The never-selected share, the longest wait and the client-level accuracy are reported.
+Where: Section 5.1, performance metrics (Eqs. (24)-(25)); Section 5.4, Participation fairness and Table U.
+Evidence: Table U (Scenario 3, 3 seeds): the raw index of FedFACS is 0.999 and 0.997 against 0.919 for random sampling; the quality-adjusted index is 0.973 and 0.963, lower because the selection is nearly uniform; Greedy leaves 72% and 66% of the clients unselected. Example: two clients with q of 10 and 5 selected twice and once give 1.0 for the adjusted and 0.9 for the raw index; 90 of 100 clients served uniformly give 0.9.
+Declaration: The index is interpreted correctly, and participation, quality-proportional participation and outcome are measured separately.
+Replacement 10. recall, precision and F1 (supports the reconciliation of Table 4 in Replacement 11)
+Fix: The text states that the three quantities are computed per class from the confusion matrix of the test set and averaged with equal class weights.
+Where: Section 5.1, after Eq. (22); Section 5.4, Classification metrics and Table T.
+Evidence: Table T (15 runs per row): on CIFAR-10 and FMNIST the macro-recall equals the accuracy in every run; on MNIST the two differ by at most 0.92 points; the macro-F1 differs from the macro-recall by at most 0.7 points. In the original Table 4 the F1 exceeded the recall by 4 to 10 points, which is not possible for macro-averages on these test sets.
+Declaration: The averaging is stated, and the reproduced values follow it.
+2. Edits: before and after, with locations
+Replacement 9
+Replacement 9, edit 1: Section 4.2: state after aggregation, commit and Eq. (19)
+Location: Section 4.2, end of the model description (original line 465)
+Before (remove)
+One more step, the resulting model is assessed on a separate validation set, then the centralized server updates its deviation control signal and global fairness baseline as defined in Eq. (19). As the final step, the resulting global model parameters , , and  are broadcast to the entire set of  clients for the following training round.
+
+After (put instead)
+After aggregation, the server evaluates the candidate model on a separate validation set and stages , , ,  and  (Eq. (19)). The model, the feedback state and the counters are committed together only if all numerical and protocol checks pass; otherwise the staged state is discarded and the consumed resources are still recorded. In a deployment, messages carry run and round identifiers, and duplicate or stale messages are rejected. The committed global model parameters , , and  are then broadcast to all  candidate clients for the following training round.
+
+Replacement 9, edit 2: Section 4.2: description of Algorithm 2
+Location: Section 4.2, paragraph after Algorithm 1 (original line 347)
+Before (remove)
+Furthermore, algorithm 2 outlines the overall procedure of server-side client selection and model aggregation. Clients are ranked according to their fitness scores. In addition, the cohort size is dynamically defined to select the top  clients based on global convergence efficiency  (Lines 3-7). The centralized server combines the locally trained models received from the selected clients using a stability-aware weighting strategy to construct an aggregated global model for the subsequent training (Lines 8). Furthermore, the resulting global model is then validated using the validation dataset. (Lines 9). Every participating client is supplied with the latest global model, accompanied by the fairness baseline and the deviation control signal (Lines 10-13).
+After (put instead)
+Furthermore, algorithm 2 outlines the overall procedure of server-side client selection and model aggregation. Clients are ranked according to their fitness scores. In addition, the cohort size  is dynamically defined from the global convergence efficiency of the previous round, and the cohort of  clients is selected, overdue clients first and then those of highest fitness (Lines 3-6). The centralized server receives the trained models, stability scores and sample counts of the selected clients and combines them with the nonnegative normalised weights of Eq. (18) to construct an aggregated global model for the subsequent training (Lines 7-8). Furthermore, the resulting candidate model is validated using the validation dataset (Line 9). The model, the feedback state and the idle counters are then committed together, and every participating client is supplied with the latest global model, accompanied by the fairness baseline and the deviation control signal (Lines 10-11).
+Replacement 9, edit 3: Algorithm 2, inputs, outputs and steps
+Location: Section 4.2, Algorithm 2 (original line 310); changed lines are marked, unchanged lines are shown in plain text.
+Before (remove)
+Input: : communication rounds, : local datasets of clients, : total number of clients,  reference convergence rate, : number on idle consecutive rounds, : local model for client , : fitness score, : stability score.
+Output: : Global model, : Average fairness baseline, : Deviation control signal.
+Initialize the global model parameters
+For each communication round  do
+Receive from clients: 
+Sort clients according to their fitness scores in descending order
+Compute global convergence efficiency  using (15)
+Estimate number of top  to select using (16)
+Select  clients with highest fitness scores
+Aggregate selected clients’ updates with stability weights:
+Evaluate updated global model on validation data
+Update  using (19)
+Compute : 
+Broadcast to all  clients: 
+End for
+After (put instead)
+Input: : communication rounds, : local datasets of clients, : total number of clients,  reference convergence rate, : number on idle consecutive rounds, : local model for client , : fitness score, : stability score, : sample count, : waiting-time threshold.
+Output: : Global model, : Average fairness baseline, : Deviation control signal.
+Initialize the global model parameters, , , , , 
+For each communication round  do
+Receive from clients: 
+Sort clients according to their fitness scores in descending order (ties by ascending identifier)
+Compute the cohort size  using (16) from 
+Select the  clients : overdue clients first (largest  first, ties by identifier), then those of highest fitness (Eq. (3), Section 4.3)
+Receive  from the selected clients
+Aggregate with the weights  from (18):
+Evaluate the candidate model on validation data; compute  using (15),  using (11) and  using (10)
+Update  using (7) and  using (19); commit model, feedback state and counters together
+Broadcast to all  clients: 
+End for
+Replacement 10
+Replacement 10, edit 1: Section 5, metrics: round-to-target
+Location: Section 5.1, performance metrics (original line 504)
+Before (remove)
+Round-to-accuracy: defines the training iteration count required to reach a specified accuracy. This metric provides an assessment of the convergence efficiency of the client selection strategy and the communication cost associated with achieving the desired performance, where fewer communication rounds indicate faster convergence and lower communication requirements.
+After (put instead)
+Round-to-accuracy: defines the first completed training round at which the accuracy reaches a specified target on the validation data; a run that does not reach the target within its budget is recorded as not reached. This metric provides an assessment of the convergence efficiency of the client selection strategy, where fewer communication rounds indicate faster convergence.
+Replacement 10, edit 2: Section 5, metrics: macro-averaging of recall, precision and F1
+Location: Section 5.1, performance metrics, after Eq. (22) (original line 525)
+Before (remove)
+In the formulation, , , and  indicate correctly detected, incorrectly predicted, and missed positive instances, respectively. These metrics evaluate the performance, stability, and generalization ability of FedFACS under non-IID conditions.
+After (put instead)
+In the formulation, , , and  indicate correctly detected, incorrectly predicted, and missed positive instances, respectively. For ten classes the three quantities are computed per class from the confusion matrix of the test set and averaged with equal class weights (macro-average). These metrics evaluate the performance, stability, and generalization ability of FedFACS under non-IID conditions.
+Replacement 10, edit 3: Section 5, metrics: cumulative uploads and the total communication, Eqs. (23) and (23a)
+Location: Section 5.1, performance metrics (original line 528)
+Before (remove)
+Cumulative number of selected clients until convergence (): indicates the overall number of clients selected for aggregation across all training rounds before the global model reaches the target accuracy.
+
+After (put instead)
+Cumulative number of selected clients until convergence (): indicates the overall number of client updates uploaded for aggregation across the first  training rounds:
+
+The total communication , in bytes over the first  rounds, also includes downloads, auxiliary traffic and any setup or calibration traffic:
+
+where ,  and  are the model-download, update-upload and auxiliary traffic of round  (in bytes), ,  and  are the setup, calibration (zero for FedFACS) and final-model traffic, and  is the set of attempted rounds, including partial and cancelled ones. Local training steps, scoring forward passes and elapsed time are counted separately (Table V).
+Replacement 10, edit 4: Section 5, metrics: Jain’s index, quality and the reading of the index, Eqs. (24)-(25)
+Location: Section 5.1, performance metrics (original line 535)
+Before (remove)
+Jain’s Fairness Index (JFI): quantifies client-selection fairness using the number of times each client is selected throughout training (Shi et al. 2024; Cho et al. 2020).
+
+
+For client ,  reflects its rate of participation in model aggregation, while  denotes the overall client population, and  represents the quality of its locally stored dataset (Shi et al. 2023). When , it refers to equal participation for all clients, when the values in the range  indicate that all clients participates with different times, and values below  represent the unfair participation.
+After (put instead)
+Jain’s Fairness Index (JFI): quantifies the fairness of participation on the quality-adjusted participation  (Shi et al. 2024; Cho et al. 2020).
+
+
+For client ,  reflects its rate of participation in model aggregation, while  denotes the overall client population, and  represents the quality of its locally stored dataset (Shi et al. 2023). Therefore  means participation proportional to quality, which equals equal participation only when all  are equal. The minimum value is , and a value between  and  can also arise when some clients are never served (serving 90 of 100 equal-quality clients uniformly gives ). Because  depends on the noise level, JFI differences may partly reflect selection by data quality. Three notions of fairness are therefore distinguished: equality of participation, measured by Eq. (24) with ; participation proportional to quality, measured by Eq. (24); and fairness of the outcome, measured by the accuracy of the global model on the held-out local data of each client (mean, standard deviation and 10th percentile). The share of clients that are never selected and the longest waiting time are reported with them (Table U).
+3. New text and tables for Section 5.4 (do not exist in the original paper)
+Insert the four paragraphs and Tables V, U, T and S below in Section 5.4, after the paragraph on participation and aggregation influence. Every number is recomputed from the run logs by tools/ev910.py.
+Communication and computation cost. Table V counts the resources over 100 rounds. FedFACS sends the model to all  candidates and trains all of them, so that its downloads and local steps are 10.0 times those of random sampling, while its uploads are 9.71 per round against 10. After 100 rounds the volume of Eq. (23a) is 5.5 times that of random sampling (368.6 against 67.2 GB). To the common target accuracy FedFACS uploads 520 updates against 555 for random sampling (6.2% fewer) and transmits 198 against 37 GB in total, since every candidate receives and trains the model. The saving of FedFACS is therefore in the uploaded updates; Power-of-Choice downloads 20 and DivFL 100 models per round for a cohort of ten. The simulated elapsed time per round is 3.4 s against 0.3 s (clients are trained sequentially on one GPU).
+Table V. Resources per round and cost to the common target accuracy (45 runs per method: CIFAR-10, FMNIST and MNIST; Dirichlet  and two-class partitions; five seeds; 100 rounds;  clients). Per round: models downloaded, updates uploaded, local SGD steps, scoring or probing forward passes (thousands). Total GB is the volume of Eq. (23a) without setup traffic. Cost to target: uploaded updates (runs reaching the target / runs) and total GB, averaged over the runs that reach the target. Time is the simulated elapsed time per round.
+Participation fairness. Table U separates three notions. The Jain index of the selection counts (equality of participation) is 0.999 and 0.997 for FedFACS on CIFAR-10 and FMNIST, against 0.919 and 0.919 for random sampling; no client is left unselected and the longest wait is 10 rounds. The quality-adjusted index of Eq. (24) is 0.973 and 0.963; it equals one when  is proportional to , whereas FedFACS serves the clients almost uniformly, so that two clients with  and  selected twice and once give 1.0 for the adjusted and 0.9 for the raw index. Greedy selection leaves 72% and 66% of the clients unselected. The outcome is described by the client-level accuracy: its 10th percentile is 64.0% and 81.8% for FedFACS against 64.4% and 82.4% for random sampling.
+Table U. Participation and outcome fairness in Scenario 3 (noisy clients, IID; mean of 3 seeds, 100 rounds). JFI is Eq. (24) with  and JFI is Eq. (24). Client accuracy: mean, standard deviation and 10th percentile (%) of the global model on the held-out local data of each client. The FedFACS runs use the stability weights (); the selection rule is the same for all .
+Classification metrics. Table T reports the macro-averaged metrics. On CIFAR-10 and FMNIST, whose test sets have equal class sizes, the macro-recall equals the accuracy in every run; on MNIST, whose classes are unbalanced, the two differ by at most 0.92 points. The macro-F1 differs from the macro-recall by at most 0.7 points in every row.
+Table T. Accuracy and macro-averaged recall, precision and F1 (%) computed from the confusion matrix of the test set (mean of 15 runs per row: three partitions, five seeds).
+Protocol consistency. Table S lists the consistency checks applied to the per-round logs. Every check holds in all 251 runs of FedFACS and its variants, and the 13 unit tests of the equations of Section 4 (idle counter, mixing coefficient, aggregation weights, cohort size, reference trajectory) pass.
+Table S. Consistency of the logged protocol in the 251 runs of FedFACS and its ablation variants. Across all 689 runs of the reproduction no round was cancelled and no client update was non-finite.
+4. Notation declared by these replacements
+5. Prepared answers and open points (internal, not for the manuscript)
+Does FedFACS reduce communication? It reduces the uploads (6.2% fewer than random sampling to the common target); the total volume to the target is 5.3 times that of random sampling (198 against 37 GB) and the local computation is 10 times. The wording of the title and the abstract (“communication-efficient”) has to be limited to the uploads; this is handled in Replacement 11.
+Is there a configuration where the total volume is lower? Not in the reproduction: all candidates download the model and train. A saving in the total volume would need a lighter scoring pass or a subset of candidates; this is outside the present method.
+Why is the quality-adjusted index below the raw index? FedFACS serves the clients almost uniformly (raw index 0.999), while the adjusted index is one only for participation proportional to quality.
+Scenario 4. The reproduction contains Scenario 3 only; Table U has no Scenario 4 rows.
+Messages with identifiers. The simulation is synchronous and single-process; the sentence on identifiers describes a deployment and is introduced with “In a deployment”.
+Reproducibility package. The runs log the configuration, seeds, per-round selections, cohort sizes, validation loss and accuracy, the mean mixing coefficient and fairness term, the deviation signal and the traffic counters (JSON); the individual fitness scores of every round are not logged, so a package that includes them needs a rerun; a release statement needs the authors’ confirmation.
+Original Table 4. Its recall and F1 values are not reproduced by Table T (macro-recall equals accuracy on balanced test sets); they are recomputed or removed in Replacement 11.

@@ -1,0 +1,9 @@
+6 jobs
+[1/6] cifar10 s1_0.5 a2_relcoh seed=0 done in 292s (elapsed 4.9 min)
+[2/6] fmnist s1_0.5 a2_relcoh seed=0 done in 340s (elapsed 10.5 min)
+[3/6] cifar10 s1_0.5 a2_relcoh seed=1 done in 289s (elapsed 15.4 min)
+[4/6] fmnist s1_0.5 a2_relcoh seed=1 done in 319s (elapsed 20.7 min)
+[5/6] cifar10 s1_0.5 a2_relcoh seed=2 done in 280s (elapsed 25.3 min)
+[6/6] fmnist s1_0.5 a2_relcoh seed=2 done in 385s (elapsed 31.8 min)
+FAILED JOBS: []
+ALL DONE

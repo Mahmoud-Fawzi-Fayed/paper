@@ -1,0 +1,96 @@
+\subsection{Analysis of the selection score}\label{sec:score_analysis}
+This subsection examines the components of the selection score of Eqs.~(5)--(14). It uses a ResNet-18 with frozen early layers, 100 clients, 100 rounds and cohorts of 5 to 10 clients, with 3 seeds for the ablations (5 for the utility analysis) and 95\% bootstrap intervals. The absolute accuracies therefore differ from those of Tables~1 and~2. All variants in Table~\ref{tab:mixing} use sample-count aggregation and differ from FedFACS only in the mixing coefficient $a$.
+
+\textbf{Utility of the KL score.} For every candidate client, in rounds 1, 5, 10, 25, 50 and 100, we computed the marginal gain, i.e. the reduction in global validation loss obtained when that client's update alone is added to the global model with weight $1/m_t$, and its Spearman rank correlation $\rho$ with the client indicators of Table~\ref{tab:kl_validity}. The KL score is positively associated with the gain under every label-skew partition ($\rho=0.39$ to $0.73$). The global cross-entropy of the client's examples is the stronger predictor under label skew but reverses its sign under label noise ($\rho=-0.77$), because clients with corrupted labels have a high loss and degrade the aggregate; the KL score shows no such reversal ($\rho=0.12$, not significant). Selecting with a loss-based utility instead of KL changes accuracy by $+0.57$ [$-0.33$, $+1.64$] points on CIFAR-10 and $+0.25$ [$-0.08$, $+0.48$] on FMNIST, i.e. not detectably. The KL score is therefore a valid, label-free and noise-robust utility indicator. Compared with the raw parameter drift $\lVert w_i^t-w_{\mathrm{global}}^t\rVert$ (Table~\ref{tab:kl_drift}), it is the better predictor under the two-class partition on both datasets and is not distinguishable from it under Dirichlet $\alpha=0.1$.
+
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\caption{Spearman correlation between a client indicator and the marginal validation-loss gain of its update, pooled over datasets and seeds ($n$ round-runs; 95\% bootstrap intervals in brackets; higher is better).}
+\label{tab:kl_validity}
+\begin{tabular*}{\journalfloatwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Data partition & $n$ & KL score $\uparrow$ & Global cross-entropy $\uparrow$ \\
+\midrule
+Dirichlet $\alpha=0.1$ & 90 & 0.50 [0.42, 0.58] & \textbf{0.64} [0.59, 0.69] \\
+Dirichlet $\alpha=0.5$ & 90 & 0.39 [0.33, 0.45] & \textbf{0.50} [0.45, 0.55] \\
+Two classes per client & 90 & 0.73 [0.69, 0.77] & \textbf{0.75} [0.71, 0.79] \\
+Label noise (0--45\%)  & 18 & \textbf{0.12} [$-$0.09, 0.33] & $-$0.77 [$-$0.88, $-$0.65] \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\caption{KL score versus parameter drift as predictors of the marginal gain (Spearman $\rho$; 2 seeds, 12 round-runs per row; the last column is the paired difference with its 95\% bootstrap interval; higher is better).}
+\label{tab:kl_drift}
+\begin{tabular*}{\journalfloatwidth}{@{\extracolsep{\fill}}llccc@{}}
+\toprule
+Dataset & Data partition & KL score $\uparrow$ & Drift $\uparrow$ & KL $-$ drift $\uparrow$ \\
+\midrule
+CIFAR-10 & Dirichlet $\alpha=0.1$ & 0.41 & 0.24 & 0.17 [$-$0.17, 0.43] \\
+         & Two classes per client & 0.71 & 0.33 & \textbf{0.37} [0.32, 0.43] \\
+FMNIST   & Dirichlet $\alpha=0.1$ & 0.56 & 0.64 & $-$0.08 [$-$0.34, 0.11] \\
+         & Two classes per client & 0.75 & 0.50 & \textbf{0.25} [0.09, 0.46] \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\textbf{Fairness term and mixing coefficient.} At the diagnostic rounds 5 to 100 the fairness term has a median of 1.88 and the utility score $\Delta KL_i^t$ a median of 0.73, and the coefficients have a median of 0.10 (below). The weighted utility term $a_i^t\Delta KL_i^t$ is therefore a median 3\% of $(1-a_i^t)F_i^t$, the priority of Eq.~(9) is rank-correlated with $F_i^t$ (Spearman 0.92 against 0.27 for $\Delta KL_i^t$), and 98.9\% of the selected clients have a fairness term above the median: the priority is determined mainly by the waiting time, and the utility term orders the clients with similar waiting times. Table~\ref{tab:mixing} shows that this regime is the one that works. Without the fairness term ($a=1$) the Jain index falls to 0.56 and 0.35, 10.0\% and 20.3\% of the clients are never selected, and accuracy decreases by 2.6 and 2.2 points. A balanced constant $a=0.5$ lowers the Jain index to 0.92 and 0.94, lengthens the longest wait to 14--16 rounds, and lowers accuracy (best round, CIFAR-10: $-1.25$ [$-1.90$, $-0.73$]; last 10 rounds, FMNIST: $-1.53$ [$-3.42$, $-0.29$]). Rank-normalising both terms so that they carry equal weight, together with the waiting-time guard and with $a\in\{0.25,0.5\}$, gave the same outcome: the Jain index fell to 0.94--0.99, the longest wait rose to 17--20 rounds, and accuracy did not improve ($-0.5$ to $-0.8$ points). At the diagnostic rounds 5 to 100 the coefficients of the clients have a median of 0.10 (mean 0.14; 5th--95th percentile 0.001--0.33). In accuracy, no constant is significantly better than the feedback rule in any comparison, and the rule is significantly better in some ($a=0.05$ on CIFAR-10, best round: $-0.80$ [$-1.91$, $-0.10$] for the constant; $a=0.10$ on FMNIST, last 10 rounds: $-0.90$ [$-1.33$, $-0.30$]); the constants $a=0.05$ and $a=0.10$ differ from it by at most one round in the longest wait and by at most 0.002 in the Jain index. The rule thus provides this operating point without requiring the coefficient to be tuned.
+
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.08}
+\caption{Feedback rule versus constant mixing coefficients (Dirichlet $\alpha=0.5$, sample-count aggregation; mean $\pm$ standard deviation over 3 seeds). Acc.: test accuracy at the round of best validation accuracy; Last-10: mean test accuracy of the last 10 rounds; $a=1$ removes the fairness term. Arrows indicate the preferred direction. Bold: best value per dataset and column (ties not marked).}
+\label{tab:mixing}
+\begin{tabular*}{\journalfloatwidth}{@{\extracolsep{\fill}}llccccccc@{}}
+\toprule
+Dataset & Rule & Acc. (\%) $\uparrow$ & Last-10 (\%) $\uparrow$ & JFI $\uparrow$ & Never sel. (\%) $\downarrow$ & Max. wait $\downarrow$ & Weakest 10\% (\%) $\uparrow$ \\
+\midrule
+CIFAR-10 & FedFACS (feedback rule) & \textbf{72.13} $\pm$ 0.23 & 70.17 $\pm$ 0.83 & 0.997 & 0 & 11.0 & 63.2 $\pm$ 1.5 \\
+         & Constant $a=0.05$       & 71.33 $\pm$ 0.74 & 70.04 $\pm$ 0.78 & \textbf{0.999} & 0 & 10.0 & 63.2 $\pm$ 1.0 \\
+         & Constant $a=0.10$       & 72.01 $\pm$ 0.36 & \textbf{70.46} $\pm$ 0.33 & 0.998 & 0 & 10.0 & 60.5 $\pm$ 3.2 \\
+         & Constant $a=0.5$        & 70.88 $\pm$ 0.74 & 68.81 $\pm$ 0.95 & 0.916 & 0 & 15.7 & 57.3 $\pm$ 4.1 \\
+         & Constant $a=1$ (no fairness) & 69.54 $\pm$ 0.35 & 65.58 $\pm$ 0.72 & 0.557 & 10.0 & 100 & 55.2 $\pm$ 1.3 \\
+\midrule
+FMNIST   & FedFACS (feedback rule) & \textbf{85.54} $\pm$ 0.34 & \textbf{84.57} $\pm$ 0.55 & 0.998 & 0 & 10.7 & 76.3 $\pm$ 2.2 \\
+         & Constant $a=0.05$       & 85.49 $\pm$ 0.47 & 84.18 $\pm$ 0.66 & 0.998 & 0 & 10.3 & 73.3 $\pm$ 1.7 \\
+         & Constant $a=0.10$       & 85.24 $\pm$ 0.39 & 83.67 $\pm$ 0.42 & 0.998 & 0 & \textbf{10.0} & 73.9 $\pm$ 4.0 \\
+         & Constant $a=0.5$        & 85.32 $\pm$ 0.33 & 83.04 $\pm$ 1.13 & 0.941 & 0 & 14.3 & \textbf{76.6} $\pm$ 2.0 \\
+         & Constant $a=1$ (no fairness) & 83.36 $\pm$ 1.09 & 79.00 $\pm$ 0.14 & 0.346 & 20.3 & 100 & 68.2 $\pm$ 6.3 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\textbf{Aggregation weights.} Replacing the stability weights ($\kappa=1$ in Eq.~(18)) by sample-count weights ($\kappa=0$), with the selection unchanged, leaves participation unchanged (Jain index 0.995--0.999, longest wait 10--13 rounds, no unselected client in all nine settings) and removes most of the oscillation of the global model at the end of training: in the five of nine dataset--partition settings with a detectable difference the last-10-round accuracy increases (by up to 9.6 [7.4, 12.9] points on MNIST with $\alpha=0.5$), in none does it decrease, and the round-to-round fluctuation of the test accuracy falls from 5.0 to 1.5 points on CIFAR-10 and from 3.9 to 1.0 points on FMNIST ($\alpha=0.5$). The best-round accuracy is higher in four settings, not distinguishable in four, and lower in one (CIFAR-10, $\alpha=0.1$). FedFACS therefore uses $\kappa=0$.
+
+\textbf{Cohort size.} Eq.~(16) with the absolute loss reduction $\rho^{t-1}$ keeps the cohort at $C_{k_{\max}}$ in 75\% of the rounds and never below 7 clients in the 45 runs of the reproduction study (mean 9.71 [9.68, 9.75] clients, i.e.\ 2.9\% fewer uploads than a fixed cohort of ten). Measuring the efficiency against the reference pace of the run (the ratio $\rho^{t-1}/\Omega^{t}$ in place of $\rho^{t-1}$ in Eq.~(16)) uses the whole range from 5 to 10 clients: in Table~\ref{tab:cohort} the mean cohort falls from 9.83 to 9.10 clients and the upload volume by 7.5\% relative to the absolute rule (9.0\% relative to a fixed cohort), with best-round accuracy $-0.29$ [$-0.57$, $+0.05$] and last-10-round accuracy $-0.08$ [$-0.55$, $+0.41$] points, Jain index 0.997 against 0.998 and no unselected client; the longest wait rises from 10.8 to 14.0 rounds, below the threshold $R=20$ of the waiting-time guard. The saving of either rule is bounded by $1-C_{k_{\min}}/C_{k_{\max}}$. The cohort size is the number of uploads per round; the cumulative uploads to a target accuracy are the sum of the cohort sizes over the rounds needed to reach it, so that a reduction of the cumulative count can come from smaller cohorts or from fewer rounds, and the two are reported separately (Section~\ref{sec:score_analysis} and the round-to-target columns of Section 5).
+
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\caption{Cohort rules (CIFAR-10 and FMNIST, Dirichlet $\alpha=0.5$, sample-count aggregation, bounds 5 and 10; mean of 6 runs). Accuracy columns: paired difference to the fixed cohort of ten with 95\% bootstrap interval (best-round and last-10-round test accuracy, percentage points).}
+\label{tab:cohort}
+\begin{tabular*}{\journalfloatwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+Rule & Mean cohort & Smallest $m_t$ & Uploads (GB) & $\Delta$ best acc. & $\Delta$ last-10 acc. & Max. wait \\
+\midrule
+Fixed cohort of ten & 10.00 & 10 & 33.6 & --- & --- & 10.0 \\
+Absolute rule, Eq.~(16) & 9.83 & 8 & 33.0 & $+0.38$ [$-0.20$, $+0.96$] & $+0.47$ [$-0.10$, $+1.10$] & 10.8 \\
+Relative rate & 9.10 & 5 & 30.6 & $+0.09$ [$-0.34$, $+0.58$] & $+0.39$ [$-0.20$, $+1.14$] & 14.0 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\textbf{Participation and aggregation influence.} With the feedback rule and sample-count aggregation (45 runs, nine settings) every client was selected at least once, the Jain index of the selection counts was 0.995--0.999 and the longest wait 10--13 rounds, below the guard threshold; the weakest tenth of the clients reached 63.2\% and 76.3\% accuracy on CIFAR-10 and FMNIST (Table~\ref{tab:mixing}). The cumulative aggregation influence of a client, the sum of its weights $S_i^t$ over the rounds, was positive for every client; on average over the runs the least influential client had 0.35 and the most influential 2.24 times the mean influence (Gini coefficient 0.21). The smallest weight of any selected client in any round was $2\times10^{-3}$ with sample-count weights and $4\times10^{-5}$ with stability weights, so that no weight was zero or negative.
+
+\textbf{Uncertainty penalty.} The batch variance does not separate noisy from clean clients (rank AUC 0.45 [0.39, 0.52]), so it acts as a stabilising term in the fitness of Eq.~(14) and not as a noise detector. With sample-count aggregation, removing it changes the best-round accuracy by $-0.04$ [$-0.22$, $+0.12$] points on CIFAR-10 and $-0.14$ [$-0.35$, $+0.27$] on FMNIST and lowers the last-10-round accuracy by 0.39 [0.14, 0.77] points on FMNIST, so the penalty improves the stability of the final model on FMNIST and is neutral on CIFAR-10. In the 96 main runs of FedFACS and FedFACS-A2 the mean mixing coefficient decreased in 98.2\% of the 4,316 rounds in which $\nu^t>0$, as Eq.~(8) predicts.

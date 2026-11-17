@@ -1,0 +1,7 @@
+fedfacs_repro/data/
+fedfacs_repro/cache/
+__pycache__/
+*.pyc
+*.pt
+*.tar.gz
+~$*

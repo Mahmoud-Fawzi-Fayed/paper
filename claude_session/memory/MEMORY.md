@@ -1,0 +1,2 @@
+- [Fix, don't just admit](feedback_fix_not_admit.md) — close reviewer comments with a real fix + declaration, Springer Q1 format
+- [No fabricated numbers](feedback_no_fabrication.md) — never adjust/predict results to favour FedFACS; real runs only

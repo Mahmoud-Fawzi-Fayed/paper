@@ -1,0 +1,506 @@
+[
+ {
+  "id": "Y-cif-abl_A2",
+  "where": "Table Y",
+  "claim": "cifar10 abl_A2: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "72.13 70.17 0.997 0 11.0 63.2",
+  "got": "72.13 70.17 0.997 0 11.0 63.2",
+  "ok": true,
+  "source": "results/*_abl_A2_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-cif-a2_fix05",
+  "where": "Table Y",
+  "claim": "cifar10 a2_fix05: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "71.33 70.04 0.999 0 10.0 63.2",
+  "got": "71.33 70.04 0.999 0 10.0 63.2",
+  "ok": true,
+  "source": "results/*_a2_fix05_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-cif-a2_fix10",
+  "where": "Table Y",
+  "claim": "cifar10 a2_fix10: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "72.01 70.46 0.998 0 10.0 60.5",
+  "got": "72.01 70.46 0.998 0 10.0 60.5",
+  "ok": true,
+  "source": "results/*_a2_fix10_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-cif-a2_fix50",
+  "where": "Table Y",
+  "claim": "cifar10 a2_fix50: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "70.88 68.81 0.916 0 15.7 57.3",
+  "got": "70.88 68.81 0.916 0 15.7 57.3",
+  "ok": true,
+  "source": "results/*_a2_fix50_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-cif-a2_nofair",
+  "where": "Table Y",
+  "claim": "cifar10 a2_nofair: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "69.54 65.58 0.557 10.0 100 55.2",
+  "got": "69.54 65.58 0.557 10.0 100 55.2",
+  "ok": true,
+  "source": "results/*_a2_nofair_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-fmn-abl_A2",
+  "where": "Table Y",
+  "claim": "fmnist abl_A2: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "85.54 84.57 0.998 0 10.7 76.3",
+  "got": "85.54 84.57 0.998 0 10.7 76.3",
+  "ok": true,
+  "source": "results/*_abl_A2_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-fmn-a2_fix05",
+  "where": "Table Y",
+  "claim": "fmnist a2_fix05: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "85.49 84.18 0.998 0 10.3 73.3",
+  "got": "85.49 84.18 0.998 0 10.3 73.3",
+  "ok": true,
+  "source": "results/*_a2_fix05_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-fmn-a2_fix10",
+  "where": "Table Y",
+  "claim": "fmnist a2_fix10: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "85.24 83.67 0.998 0 10.0 73.9",
+  "got": "85.24 83.67 0.998 0 10.0 73.9",
+  "ok": true,
+  "source": "results/*_a2_fix10_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-fmn-a2_fix50",
+  "where": "Table Y",
+  "claim": "fmnist a2_fix50: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "85.32 83.04 0.941 0 14.3 76.6",
+  "got": "85.32 83.04 0.941 0 14.3 76.6",
+  "ok": true,
+  "source": "results/*_a2_fix50_s{0,1,2}.json"
+ },
+ {
+  "id": "Y-fmn-a2_nofair",
+  "where": "Table Y",
+  "claim": "fmnist a2_nofair: acc, last-10, JFI, never, max wait, weakest 10%",
+  "text": "83.36 79.00 0.346 20.3 100 68.2",
+  "got": "83.36 79.00 0.346 20.3 100 68.2",
+  "ok": true,
+  "source": "results/*_a2_nofair_s{0,1,2}.json"
+ },
+ {
+  "id": "X2-cif0.1",
+  "where": "Table X2",
+  "claim": "cifar10 s1_0.1: KL, drift, KL-drift (n=12)",
+  "text": "0.41/0.24/0.17 [-0.17, 0.43]",
+  "got": "0.41/0.24/0.17 [-0.17, 0.43]",
+  "ok": true,
+  "source": "results/*_fedfacs_s{0,1}_dist.json (diag records)"
+ },
+ {
+  "id": "X2-cifs2",
+  "where": "Table X2",
+  "claim": "cifar10 s2: KL, drift, KL-drift (n=12)",
+  "text": "0.71/0.33/0.37 [0.32, 0.43]",
+  "got": "0.71/0.33/0.37 [0.32, 0.43]",
+  "ok": true,
+  "source": "results/*_fedfacs_s{0,1}_dist.json (diag records)"
+ },
+ {
+  "id": "X2-fmn0.1",
+  "where": "Table X2",
+  "claim": "fmnist s1_0.1: KL, drift, KL-drift (n=12)",
+  "text": "0.56/0.64/-0.08 [-0.34, 0.11]",
+  "got": "0.56/0.64/-0.08 [-0.34, 0.11]",
+  "ok": true,
+  "source": "results/*_fedfacs_s{0,1}_dist.json (diag records)"
+ },
+ {
+  "id": "X2-fmns2",
+  "where": "Table X2",
+  "claim": "fmnist s2: KL, drift, KL-drift (n=12)",
+  "text": "0.75/0.50/0.25 [0.09, 0.46]",
+  "got": "0.75/0.50/0.25 [0.09, 0.46]",
+  "ok": true,
+  "source": "results/*_fedfacs_s{0,1}_dist.json (diag records)"
+ },
+ {
+  "id": "X-s1_0.1",
+  "where": "Table X",
+  "claim": "s1_0.1: KL, global CE (n=90)",
+  "text": "0.50 [0.42, 0.58] | 0.64 [0.59, 0.69] | 90",
+  "got": "0.50 [0.42, 0.58] | 0.64 [0.59, 0.69] | 90",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json (diag records); analysis/utility_validity.md"
+ },
+ {
+  "id": "X-s1_0.5",
+  "where": "Table X",
+  "claim": "s1_0.5: KL, global CE (n=90)",
+  "text": "0.39 [0.33, 0.45] | 0.50 [0.45, 0.55] | 90",
+  "got": "0.39 [0.33, 0.45] | 0.50 [0.45, 0.55] | 90",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json (diag records); analysis/utility_validity.md"
+ },
+ {
+  "id": "X-s2",
+  "where": "Table X",
+  "claim": "s2: KL, global CE (n=90)",
+  "text": "0.73 [0.69, 0.77] | 0.75 [0.71, 0.79] | 90",
+  "got": "0.73 [0.69, 0.77] | 0.75 [0.71, 0.79] | 90",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json (diag records); analysis/utility_validity.md"
+ },
+ {
+  "id": "X-s3",
+  "where": "Table X",
+  "claim": "s3: KL, global CE (n=18)",
+  "text": "0.12 [-0.09, 0.33] | -0.77 [-0.88, -0.65] | 18",
+  "got": "0.12 [-0.09, 0.33] | -0.77 [-0.88, -0.65] | 18",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json (diag records); analysis/utility_validity.md"
+ },
+ {
+  "id": "D1",
+  "where": "5.4 Aggregation",
+  "claim": "last-10 accuracy A2 minus stability: wins/ties/losses over 9 settings",
+  "text": "5/4/0",
+  "got": "5/4/0",
+  "ok": true,
+  "source": "analysis/a2_vs_all.md; results/*"
+ },
+ {
+  "id": "D2",
+  "where": "5.4 Aggregation",
+  "claim": "best-round accuracy: wins/ties/losses",
+  "text": "4/4/1",
+  "got": "4/4/1",
+  "ok": true,
+  "source": "analysis/a2_vs_all.md; results/*"
+ },
+ {
+  "id": "D3",
+  "where": "5.4 Aggregation",
+  "claim": "MNIST alpha=0.5 last-10 gain",
+  "text": "9.6 [7.4, 12.9]",
+  "got": "9.6 [7.4, 12.9]",
+  "ok": true,
+  "source": "results/*"
+ },
+ {
+  "id": "D4",
+  "where": "5.4 Aggregation",
+  "claim": "A2 Jain index range / longest wait range / unselected clients (45 runs)",
+  "text": "0.995-0.999 / 10-13 / 0",
+  "got": "0.995-0.999 / 10-13 / 0",
+  "ok": true,
+  "source": "results/*_abl_A2_s*.json"
+ },
+ {
+  "id": "D5-cif",
+  "where": "5.4 Aggregation",
+  "claim": "round-to-round fluctuation, cifar10 alpha=0.5 (stability -> sample count)",
+  "text": "5.0 -> 1.5",
+  "got": "5.0 -> 1.5",
+  "ok": true,
+  "source": "results/*; mean |diff| of test accuracy, last 30 rounds"
+ },
+ {
+  "id": "D5-fmn",
+  "where": "5.4 Aggregation",
+  "claim": "round-to-round fluctuation, fmnist alpha=0.5 (stability -> sample count)",
+  "text": "3.9 -> 1.0",
+  "got": "3.9 -> 1.0",
+  "ok": true,
+  "source": "results/*; mean |diff| of test accuracy, last 30 rounds"
+ },
+ {
+  "id": "E1",
+  "where": "5.4 Uncertainty / 4.2",
+  "claim": "rounds with nu>0 in which the mean mixing coefficient decreased (base runs of FedFACS and FedFACS-A2)",
+  "text": "98.2% of 4,316 (96 runs)",
+  "got": "98.2% of 4316 (96 runs)",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json, *_abl_A2_s*.json (log nu, a_mean)"
+ },
+ {
+  "id": "E2",
+  "where": "5.4 Mixing",
+  "claim": "per-client mixing coefficient at the diagnostic rounds 5-100 (FedFACS base runs)",
+  "text": "median 0.10 mean 0.14 p5-p95 0.001-0.33",
+  "got": "median 0.10 mean 0.14 p5-p95 0.001-0.33 (n=24300)",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json (diag records)"
+ },
+ {
+  "id": "F1",
+  "where": "4.3",
+  "claim": "longest waits for N=50,100,200,400 (fedfacs)",
+  "text": "6, 17, 22, 43",
+  "got": "6, 17, 22, 43",
+  "ok": true,
+  "source": "results/*_fedfacs_*.json (max_wait)"
+ },
+ {
+  "id": "F2",
+  "where": "4.3",
+  "claim": "number of FedFACS runs behind F1 (text: 84)",
+  "text": "84",
+  "got": "84",
+  "ok": true,
+  "source": "results/*"
+ },
+ {
+  "id": "F3",
+  "where": "4.3",
+  "claim": "no wait reached the guard threshold R=ceil(N/5)",
+  "text": "never active",
+  "got": "all below R",
+  "ok": true,
+  "source": "results/*; R=10,20,40,80"
+ },
+ {
+  "id": "G1",
+  "where": "5.4 Cohort",
+  "claim": "A2 mean cohort (45 runs)",
+  "text": "9.71 [9.68, 9.75]",
+  "got": "9.71 [9.68, 9.75]",
+  "ok": true,
+  "source": "results/*_abl_A2_*.json (log cohort)"
+ },
+ {
+  "id": "G2",
+  "where": "5.4 Cohort",
+  "claim": "rounds at Cmax / smallest cohort",
+  "text": "75% / 7",
+  "got": "75% / 7",
+  "ok": true,
+  "source": "results/*_abl_A2_*.json"
+ },
+ {
+  "id": "G3",
+  "where": "5.4 Cohort",
+  "claim": "saving versus a fixed cohort of ten",
+  "text": "2.9%",
+  "got": "2.9%",
+  "ok": true,
+  "source": "results/*"
+ },
+ {
+  "id": "G4",
+  "where": "5.4 Participation",
+  "claim": "influence: least/most influential client over the mean; Gini; clients with zero influence",
+  "text": "0.35 / 2.24 / 0.21 / 0",
+  "got": "0.35 / 2.24 / 0.21 / 0",
+  "ok": true,
+  "source": "results/*_abl_A2_*.json (selected, n)"
+ },
+ {
+  "id": "G5",
+  "where": "5.4 Participation",
+  "claim": "smallest weight of any selected client (sample-count / stability)",
+  "text": "2e-3 / 4e-5",
+  "got": "2.4e-03 / 4.4e-05",
+  "ok": true,
+  "source": "results/* (log weights_min)"
+ },
+ {
+  "id": "Z-abl_A1",
+  "where": "Table Z",
+  "claim": "abl_A1: mean cohort / smallest / uploads GB (n=6)",
+  "text": "10.00 / 10 / 33.6",
+  "got": "10.00 / 10 / 33.6",
+  "ok": true,
+  "source": "results/*; tools/ev78c.py, ev78d.py"
+ },
+ {
+  "id": "Z-abl_A2",
+  "where": "Table Z",
+  "claim": "abl_A2: mean cohort / smallest / uploads GB (n=6)",
+  "text": "9.83 / 8 / 33.0",
+  "got": "9.83 / 8 / 33.0",
+  "ok": true,
+  "source": "results/*; tools/ev78c.py, ev78d.py"
+ },
+ {
+  "id": "Z-a2_relcoh",
+  "where": "Table Z",
+  "claim": "a2_relcoh: mean cohort / smallest / uploads GB (n=6)",
+  "text": "9.10 / 5 / 30.6",
+  "got": "9.10 / 5 / 30.6",
+  "ok": true,
+  "source": "results/*; tools/ev78c.py, ev78d.py"
+ },
+ {
+  "id": "I1-cif",
+  "where": "5.4 Utility",
+  "claim": "loss-based utility minus KL utility, best-round accuracy (n=3 seeds)",
+  "text": "+0.57 [-0.33, +1.64]",
+  "got": "+0.57 [-0.33, +1.64]",
+  "ok": true,
+  "source": "results/*_abl_loss_*, *_fedfacs_*"
+ },
+ {
+  "id": "I1-fmn",
+  "where": "5.4 Utility",
+  "claim": "loss-based utility minus KL utility, best-round accuracy (n=3 seeds)",
+  "text": "+0.25 [-0.08, +0.48]",
+  "got": "+0.25 [-0.08, +0.48]",
+  "ok": true,
+  "source": "results/*_abl_loss_*, *_fedfacs_*"
+ },
+ {
+  "id": "I2-cif",
+  "where": "5.4 Uncertainty",
+  "claim": "no penalty minus penalty, best-round accuracy (n=3 seeds)",
+  "text": "-0.04 [-0.22, +0.12]",
+  "got": "-0.04 [-0.22, +0.12]",
+  "ok": true,
+  "source": "results/*_a2_nopen_*, *_abl_A2_*"
+ },
+ {
+  "id": "I2-fmn",
+  "where": "5.4 Uncertainty",
+  "claim": "no penalty minus penalty, best-round accuracy (n=3 seeds)",
+  "text": "-0.14 [-0.35, +0.27]",
+  "got": "-0.14 [-0.35, +0.27]",
+  "ok": true,
+  "source": "results/*_a2_nopen_*, *_abl_A2_*"
+ },
+ {
+  "id": "I3-fmn",
+  "where": "5.4 Uncertainty",
+  "claim": "no penalty minus penalty, last-10 accuracy",
+  "text": "-0.39 [-0.77, -0.14]",
+  "got": "-0.39 [-0.77, -0.14]",
+  "ok": true,
+  "source": "results/*"
+ },
+ {
+  "id": "I5",
+  "where": "5.4 Mixing",
+  "claim": "rank-normalised priority (a=0.25, 0.5): Jain range / longest wait range / mean accuracy change (12 runs)",
+  "text": "0.94-0.99 / 17-20 / -0.5 to -0.8",
+  "got": "0.944-0.993 / 17-20 / -0.67",
+  "ok": true,
+  "source": "results/*_norm_a25_*, *_norm_a50_*"
+ },
+ {
+  "id": "J-best",
+  "where": "5.4 Cohort",
+  "claim": "FedFACS-R minus absolute rule, best accuracy (6 runs)",
+  "text": "-0.29 [-0.57, +0.05]",
+  "got": "-0.29 [-0.57, +0.05]",
+  "ok": true,
+  "source": "results/*_a2_relcoh_*, *_abl_A2_*"
+ },
+ {
+  "id": "J-last-10",
+  "where": "5.4 Cohort",
+  "claim": "FedFACS-R minus absolute rule, last-10 accuracy (6 runs)",
+  "text": "-0.08 [-0.55, +0.41]",
+  "got": "-0.08 [-0.55, +0.41]",
+  "ok": true,
+  "source": "results/*_a2_relcoh_*, *_abl_A2_*"
+ },
+ {
+  "id": "J-up",
+  "where": "5.4 Cohort",
+  "claim": "upload reduction of FedFACS-R relative to the absolute rule",
+  "text": "7.5%",
+  "got": "7.5%",
+  "ok": true,
+  "source": "results/*"
+ },
+ {
+  "id": "J-wait",
+  "where": "5.4 Cohort",
+  "claim": "longest wait: absolute rule -> FedFACS-R",
+  "text": "10.8 -> 14.0",
+  "got": "10.8 -> 14.0",
+  "ok": true,
+  "source": "results/*"
+ },
+ {
+  "id": "K1",
+  "where": "5.4 Mixing",
+  "claim": "median fairness term / median utility score / median coefficient at rounds 5-100 (FedFACS main runs)",
+  "text": "1.88 / 0.73 / 0.10",
+  "got": "1.88 / 0.73 / 0.10",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json (diag records, 51 runs)"
+ },
+ {
+  "id": "K3",
+  "where": "5.4 Mixing",
+  "claim": "Spearman of the priority with F / with the utility score; selected clients above median F; median a*KL/((1-a)*F)",
+  "text": "0.92 / 0.27 / 98.9% / 3%",
+  "got": "0.92 / 0.27 / 98.9% / 3%",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json (diag records, log selected)"
+ },
+ {
+  "id": "K4",
+  "where": "4.2 / Lemma A",
+  "claim": "share of client-rounds with the utility score below the fairness term (rounds 5-100)",
+  "text": "82.7%",
+  "got": "82.7%",
+  "ok": true,
+  "source": "results/*_fedfacs_s*.json (diag records)"
+ },
+ {
+  "id": "K2",
+  "where": "5.4 Uncertainty",
+  "claim": "rank AUC of the batch variance for label noise",
+  "text": "0.45 [0.39, 0.52] (analysis/noise_discrimination.md)",
+  "got": "0.45 [0.38, 0.52] (n=18 round-runs, noisy = noise level above 0.2)",
+  "ok": true,
+  "source": "results/*_s3_fedfacs_s*.json (diag records); analysis/noise_discrimination.md"
+ },
+ {
+  "id": "H1",
+  "where": "4.3 Prop. 2",
+  "claim": "simulated longest wait with the guard (N=50,100,200; adversarial / random scores) against W-1",
+  "text": "<= 19, 39, 79",
+  "got": "adv 15,31,65 / rand 11,23,45",
+  "ok": true,
+  "source": "tools/verify_claims.py (3000 rounds each, cohort 5-10)"
+ },
+ {
+  "id": "H2",
+  "where": "4.3 Prop. 1(ii)",
+  "claim": "fairness term range over 2000 random counter vectors",
+  "text": "1 <= F < N+1",
+  "got": "min 1.000 max 3.3",
+  "ok": true,
+  "source": "spec.fairness"
+ },
+ {
+  "id": "H3",
+  "where": "4.3 Prop. 1(i)",
+  "claim": "mixing coefficient over 20000 random inputs lies in [0,1]",
+  "text": "[0, 1]",
+  "got": "[0.000, 0.955]",
+  "ok": true,
+  "source": "spec.mix_coeff"
+ },
+ {
+  "id": "H4",
+  "where": "4.3 Prop. 1(iii)",
+  "claim": "cohort size over 20000 random efficiencies (incl. negative)",
+  "text": "integer in [5,10]",
+  "got": "[5, 10]",
+  "ok": true,
+  "source": "spec.cohort_size"
+ },
+ {
+  "id": "H5",
+  "where": "4.3 Prop. 1(iv)",
+  "claim": "aggregation weights over 20000 random score vectors (negative, zero, tiny)",
+  "text": "w >= 0, sum = 1",
+  "got": "min 0.0e+00, max |sum-1| 2.2e-16",
+  "ok": true,
+  "source": "spec.stability_weights"
+ }
+]

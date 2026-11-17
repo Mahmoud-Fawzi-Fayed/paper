@@ -1,0 +1,104 @@
+% Main comparison tables (reproduced runs, 5 seeds). FedFACS-A2: adaptive cohort sizing with sample-count aggregation.
+
+\begin{table}[!htbp]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.08}
+\caption{Test accuracy (\%) at the round of best validation accuracy (mean $\pm$ standard deviation over 5 seeds; bold: highest mean per column and dataset).}
+\label{tab:main_acc}
+\begin{tabular*}{\journalfloatwidth}{@{\extracolsep{\fill}}llccc@{}}
+\toprule
+Dataset & Method & S1 ($\alpha=0.1$) & S1 ($\alpha=0.5$) & S2 \\
+\midrule
+CIFAR-10 & FedAvg & 66.31 $\pm$ 1.07 & 71.97 $\pm$ 0.30 & 67.10 $\pm$ 0.30 \\
+ & FedProx & 66.81 $\pm$ 0.88 & 72.07 $\pm$ 0.36 & 66.98 $\pm$ 0.50 \\
+ & FedNova & 67.27 $\pm$ 0.76 & 72.19 $\pm$ 0.53 & 66.77 $\pm$ 1.19 \\
+ & q-FFL & 67.50 $\pm$ 0.33 & 72.07 $\pm$ 0.27 & 66.69 $\pm$ 0.91 \\
+ & Pow-D & 65.93 $\pm$ 1.27 & 71.52 $\pm$ 0.45 & 67.18 $\pm$ 0.61 \\
+ & Oort & 67.37 $\pm$ 0.70 & 71.74 $\pm$ 0.42 & 66.95 $\pm$ 0.97 \\
+ & DivFL & 62.62 $\pm$ 1.36 & 68.80 $\pm$ 0.67 & 63.85 $\pm$ 1.24 \\
+ & FedFACS & \textbf{67.74 $\pm$ 0.42} & 71.50 $\pm$ 0.69 & 66.15 $\pm$ 1.37 \\
+ & FedFACS-A2 & 66.02 $\pm$ 0.84 & \textbf{72.21 $\pm$ 0.20} & \textbf{67.57 $\pm$ 1.17} \\
+\midrule
+FMNIST & FedAvg & 81.38 $\pm$ 0.70 & 85.33 $\pm$ 0.18 & 81.04 $\pm$ 0.67 \\
+ & FedProx & 81.34 $\pm$ 0.61 & 85.27 $\pm$ 0.20 & 81.01 $\pm$ 0.63 \\
+ & FedNova & 82.06 $\pm$ 0.65 & 85.47 $\pm$ 0.30 & 81.02 $\pm$ 0.63 \\
+ & q-FFL & 82.18 $\pm$ 0.99 & \textbf{85.69 $\pm$ 0.21} & \textbf{81.84 $\pm$ 0.46} \\
+ & Pow-D & 81.26 $\pm$ 0.70 & 85.37 $\pm$ 0.62 & 80.85 $\pm$ 0.72 \\
+ & Oort & \textbf{82.55 $\pm$ 0.87} & 85.54 $\pm$ 0.27 & 79.87 $\pm$ 1.61 \\
+ & DivFL & 79.07 $\pm$ 0.47 & 84.37 $\pm$ 0.30 & 77.27 $\pm$ 1.35 \\
+ & FedFACS & 81.04 $\pm$ 0.60 & 84.93 $\pm$ 0.34 & 81.36 $\pm$ 0.49 \\
+ & FedFACS-A2 & 80.96 $\pm$ 1.11 & 85.38 $\pm$ 0.48 & 80.69 $\pm$ 0.55 \\
+\midrule
+MNIST & FedAvg & 93.97 $\pm$ 0.65 & 96.26 $\pm$ 0.19 & 93.75 $\pm$ 0.17 \\
+ & FedProx & 93.98 $\pm$ 0.61 & 96.15 $\pm$ 0.16 & 93.83 $\pm$ 0.25 \\
+ & FedNova & 94.94 $\pm$ 0.26 & 96.30 $\pm$ 0.24 & 93.84 $\pm$ 0.26 \\
+ & q-FFL & 94.76 $\pm$ 0.48 & 96.39 $\pm$ 0.20 & 94.26 $\pm$ 0.34 \\
+ & Pow-D & 94.70 $\pm$ 0.36 & 96.49 $\pm$ 0.07 & 94.18 $\pm$ 0.31 \\
+ & Oort & \textbf{95.19 $\pm$ 0.22} & \textbf{96.65 $\pm$ 0.09} & \textbf{94.66 $\pm$ 0.25} \\
+ & DivFL & 92.61 $\pm$ 0.74 & 95.73 $\pm$ 0.21 & 91.38 $\pm$ 1.63 \\
+ & FedFACS & 93.70 $\pm$ 0.76 & 95.68 $\pm$ 0.21 & 93.59 $\pm$ 0.31 \\
+ & FedFACS-A2 & 94.15 $\pm$ 0.19 & 96.26 $\pm$ 0.23 & 93.83 $\pm$ 0.25 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.08}
+\caption{Test accuracy (\%) averaged over the last 10 rounds (mean $\pm$ standard deviation over 5 seeds; bold: highest mean per column and dataset).}
+\label{tab:main_last10}
+\begin{tabular*}{\journalfloatwidth}{@{\extracolsep{\fill}}llccc@{}}
+\toprule
+Dataset & Method & S1 ($\alpha=0.1$) & S1 ($\alpha=0.5$) & S2 \\
+\midrule
+CIFAR-10 & FedAvg & 62.03 $\pm$ 1.08 & 70.30 $\pm$ 0.69 & 64.00 $\pm$ 0.61 \\
+ & FedProx & 62.87 $\pm$ 1.23 & 70.46 $\pm$ 0.57 & \textbf{64.03 $\pm$ 0.56} \\
+ & FedNova & 63.25 $\pm$ 0.61 & \textbf{70.65 $\pm$ 0.43} & 63.82 $\pm$ 0.87 \\
+ & q-FFL & 62.92 $\pm$ 1.89 & 70.02 $\pm$ 0.95 & 63.58 $\pm$ 1.11 \\
+ & Pow-D & 61.63 $\pm$ 1.98 & 68.35 $\pm$ 0.40 & 62.67 $\pm$ 1.20 \\
+ & Oort & \textbf{63.61 $\pm$ 0.51} & 70.23 $\pm$ 0.44 & 63.44 $\pm$ 1.04 \\
+ & DivFL & 60.47 $\pm$ 1.41 & 68.05 $\pm$ 0.56 & 62.19 $\pm$ 0.76 \\
+ & FedFACS & 61.45 $\pm$ 2.22 & 66.90 $\pm$ 5.39 & 63.05 $\pm$ 1.46 \\
+ & FedFACS-A2 & 62.01 $\pm$ 1.46 & 70.51 $\pm$ 0.76 & 63.63 $\pm$ 0.87 \\
+\midrule
+FMNIST & FedAvg & 77.79 $\pm$ 1.23 & 84.20 $\pm$ 0.51 & 77.65 $\pm$ 0.85 \\
+ & FedProx & 77.87 $\pm$ 1.18 & 84.19 $\pm$ 0.50 & 77.66 $\pm$ 0.83 \\
+ & FedNova & 79.28 $\pm$ 0.56 & 84.38 $\pm$ 0.53 & 77.31 $\pm$ 0.54 \\
+ & q-FFL & \textbf{79.33 $\pm$ 0.60} & \textbf{84.56 $\pm$ 0.50} & 76.33 $\pm$ 1.50 \\
+ & Pow-D & 77.01 $\pm$ 1.19 & 83.79 $\pm$ 0.77 & \textbf{77.71 $\pm$ 1.69} \\
+ & Oort & 78.58 $\pm$ 2.44 & 84.39 $\pm$ 0.48 & 74.80 $\pm$ 2.52 \\
+ & DivFL & 77.30 $\pm$ 0.70 & 83.84 $\pm$ 0.53 & 75.98 $\pm$ 1.25 \\
+ & FedFACS & 76.89 $\pm$ 0.29 & 81.87 $\pm$ 1.72 & 75.16 $\pm$ 2.86 \\
+ & FedFACS-A2 & 77.34 $\pm$ 0.43 & 84.46 $\pm$ 0.42 & 76.80 $\pm$ 1.06 \\
+\midrule
+MNIST & FedAvg & 92.11 $\pm$ 0.39 & 95.95 $\pm$ 0.16 & 92.51 $\pm$ 0.52 \\
+ & FedProx & 92.14 $\pm$ 0.38 & 95.93 $\pm$ 0.17 & 92.52 $\pm$ 0.53 \\
+ & FedNova & 92.91 $\pm$ 0.74 & 96.05 $\pm$ 0.16 & 92.46 $\pm$ 0.47 \\
+ & q-FFL & 92.99 $\pm$ 0.57 & 96.02 $\pm$ 0.24 & 92.02 $\pm$ 1.60 \\
+ & Pow-D & 93.19 $\pm$ 0.81 & 96.22 $\pm$ 0.14 & 93.18 $\pm$ 0.37 \\
+ & Oort & \textbf{94.37 $\pm$ 0.36} & \textbf{96.39 $\pm$ 0.12} & \textbf{93.37 $\pm$ 1.11} \\
+ & DivFL & 91.94 $\pm$ 0.74 & 95.48 $\pm$ 0.28 & 90.56 $\pm$ 1.85 \\
+ & FedFACS & 87.91 $\pm$ 2.80 & 86.37 $\pm$ 3.75 & 88.68 $\pm$ 3.22 \\
+ & FedFACS-A2 & 92.25 $\pm$ 0.54 & 95.97 $\pm$ 0.06 & 92.54 $\pm$ 0.73 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!htbp]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.08}
+\caption{Participation fairness and cost per training run (100 rounds), averaged over the nine dataset--partition settings and 5 seeds. JFI: Jain index of the selection counts; Never: clients never selected; Max.\ wait: longest interval without selection; Download and Local steps: total model downloads and local SGD steps of all clients.}
+\label{tab:main_fair_cost}
+\begin{tabular*}{\journalfloatwidth}{@{\extracolsep{\fill}}lccccc@{}}
+\toprule
+Method & JFI $\uparrow$ & Never (\%) $\downarrow$ & Max. wait $\downarrow$ & Download (GB) $\downarrow$ & Local steps ($10^6$) $\downarrow$ \\
+\midrule
+FedAvg & 0.920 & \textbf{0.0} & 61 & \textbf{33.6} & \textbf{0.03} \\
+FedProx & 0.920 & \textbf{0.0} & 61 & \textbf{33.6} & \textbf{0.03} \\
+FedNova & 0.920 & \textbf{0.0} & 61 & \textbf{33.6} & \textbf{0.03} \\
+q-FFL & 0.920 & \textbf{0.0} & 61 & \textbf{33.6} & \textbf{0.03} \\
+Pow-D & 0.727 & 4.4 & 92 & 67.2 & \textbf{0.03} \\
+Oort & 0.493 & \textbf{0.0} & 86 & \textbf{33.6} & \textbf{0.03} \\
+DivFL & 0.203 & 47.4 & 100 & 336.0 & \textbf{0.03} \\
+FedFACS & 0.995 & \textbf{0.0} & 12 & 336.0 & 0.27 \\
+FedFACS-A2 & \textbf{0.997} & \textbf{0.0} & \textbf{11} & 336.0 & 0.27 \\
+\bottomrule
+\end{tabular*}
+\end{table}

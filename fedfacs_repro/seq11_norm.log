@@ -1,0 +1,15 @@
+12 jobs
+[1/12] fmnist s1_0.5 norm_a25 seed=0 done in 402s (elapsed 6.7 min)
+[2/12] fmnist s1_0.5 norm_a50 seed=0 done in 445s (elapsed 14.1 min)
+[3/12] cifar10 s1_0.5 norm_a25 seed=0 done in 356s (elapsed 20.1 min)
+[4/12] cifar10 s1_0.5 norm_a50 seed=0 done in 320s (elapsed 25.4 min)
+[5/12] fmnist s1_0.5 norm_a25 seed=1 done in 354s (elapsed 31.3 min)
+[6/12] fmnist s1_0.5 norm_a50 seed=1 done in 354s (elapsed 37.2 min)
+[7/12] cifar10 s1_0.5 norm_a25 seed=1 done in 298s (elapsed 42.2 min)
+[8/12] cifar10 s1_0.5 norm_a50 seed=1 done in 299s (elapsed 47.2 min)
+[9/12] fmnist s1_0.5 norm_a25 seed=2 done in 352s (elapsed 53.0 min)
+[10/12] fmnist s1_0.5 norm_a50 seed=2 done in 351s (elapsed 58.9 min)
+[11/12] cifar10 s1_0.5 norm_a25 seed=2 done in 300s (elapsed 63.9 min)
+[12/12] cifar10 s1_0.5 norm_a50 seed=2 done in 295s (elapsed 68.8 min)
+FAILED JOBS: []
+ALL DONE

@@ -1,0 +1,1 @@
+{"rounds": 100, "epochs": 2, "datasets": ["cifar10", "fmnist"], "scenarios": ["s1_0.5"], "methods": ["a2_fix05", "a2_fix10", "a2_fix50", "a2_nofair", "a2_nopen"], "seeds": [0, 1, 2], "tag": ""}

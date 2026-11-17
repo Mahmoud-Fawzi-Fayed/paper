@@ -1,0 +1,15 @@
+12 jobs
+[1/12] fmnist s1_0.5 abl_fix05 seed=0 done in 409s (elapsed 6.8 min)
+[2/12] fmnist s1_0.5 abl_fix10 seed=0 done in 398s (elapsed 13.5 min)
+[3/12] cifar10 s1_0.5 abl_fix05 seed=0 done in 363s (elapsed 19.5 min)
+[4/12] cifar10 s1_0.5 abl_fix10 seed=0 done in 355s (elapsed 25.4 min)
+[5/12] fmnist s1_0.5 abl_fix05 seed=1 done in 420s (elapsed 32.4 min)
+[6/12] fmnist s1_0.5 abl_fix10 seed=1 done in 420s (elapsed 39.4 min)
+[7/12] cifar10 s1_0.5 abl_fix05 seed=1 done in 397s (elapsed 46.0 min)
+[8/12] cifar10 s1_0.5 abl_fix10 seed=1 done in 405s (elapsed 52.8 min)
+[9/12] fmnist s1_0.5 abl_fix05 seed=2 done in 376s (elapsed 59.0 min)
+[10/12] fmnist s1_0.5 abl_fix10 seed=2 done in 356s (elapsed 65.0 min)
+[11/12] cifar10 s1_0.5 abl_fix05 seed=2 done in 328s (elapsed 70.4 min)
+[12/12] cifar10 s1_0.5 abl_fix10 seed=2 done in 303s (elapsed 75.5 min)
+FAILED JOBS: []
+ALL DONE

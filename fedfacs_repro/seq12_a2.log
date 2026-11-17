@@ -1,0 +1,93 @@
+45 jobs
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.1_abl_A2_s0.json
+[1/45] cifar10 s1_0.1 abl_A2 seed=0 done in 17s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.5_abl_A2_s0.json
+[2/45] cifar10 s1_0.5 abl_A2 seed=0 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s2_abl_A2_s0.json
+[3/45] cifar10 s2 abl_A2 seed=0 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.1_abl_A2_s0.json
+[4/45] fmnist s1_0.1 abl_A2 seed=0 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.5_abl_A2_s0.json
+[5/45] fmnist s1_0.5 abl_A2 seed=0 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s2_abl_A2_s0.json
+[6/45] fmnist s2 abl_A2 seed=0 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.1_abl_A2_s0.json
+[7/45] mnist s1_0.1 abl_A2 seed=0 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.5_abl_A2_s0.json
+[8/45] mnist s1_0.5 abl_A2 seed=0 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s2_abl_A2_s0.json
+[9/45] mnist s2 abl_A2 seed=0 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.1_abl_A2_s1.json
+[10/45] cifar10 s1_0.1 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.5_abl_A2_s1.json
+[11/45] cifar10 s1_0.5 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s2_abl_A2_s1.json
+[12/45] cifar10 s2 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.1_abl_A2_s1.json
+[13/45] fmnist s1_0.1 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.5_abl_A2_s1.json
+[14/45] fmnist s1_0.5 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s2_abl_A2_s1.json
+[15/45] fmnist s2 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.1_abl_A2_s1.json
+[16/45] mnist s1_0.1 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.5_abl_A2_s1.json
+[17/45] mnist s1_0.5 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s2_abl_A2_s1.json
+[18/45] mnist s2 abl_A2 seed=1 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.1_abl_A2_s2.json
+[19/45] cifar10 s1_0.1 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.5_abl_A2_s2.json
+[20/45] cifar10 s1_0.5 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s2_abl_A2_s2.json
+[21/45] cifar10 s2 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.1_abl_A2_s2.json
+[22/45] fmnist s1_0.1 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.5_abl_A2_s2.json
+[23/45] fmnist s1_0.5 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s2_abl_A2_s2.json
+[24/45] fmnist s2 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.1_abl_A2_s2.json
+[25/45] mnist s1_0.1 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.5_abl_A2_s2.json
+[26/45] mnist s1_0.5 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s2_abl_A2_s2.json
+[27/45] mnist s2 abl_A2 seed=2 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.1_abl_A2_s3.json
+[28/45] cifar10 s1_0.1 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.5_abl_A2_s3.json
+[29/45] cifar10 s1_0.5 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s2_abl_A2_s3.json
+[30/45] cifar10 s2 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.1_abl_A2_s3.json
+[31/45] fmnist s1_0.1 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.5_abl_A2_s3.json
+[32/45] fmnist s1_0.5 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s2_abl_A2_s3.json
+[33/45] fmnist s2 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.1_abl_A2_s3.json
+[34/45] mnist s1_0.1 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.5_abl_A2_s3.json
+[35/45] mnist s1_0.5 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s2_abl_A2_s3.json
+[36/45] mnist s2 abl_A2 seed=3 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.1_abl_A2_s4.json
+[37/45] cifar10 s1_0.1 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s1_0.5_abl_A2_s4.json
+[38/45] cifar10 s1_0.5 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\cifar10_s2_abl_A2_s4.json
+[39/45] cifar10 s2 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.1_abl_A2_s4.json
+[40/45] fmnist s1_0.1 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s1_0.5_abl_A2_s4.json
+[41/45] fmnist s1_0.5 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\fmnist_s2_abl_A2_s4.json
+[42/45] fmnist s2 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.1_abl_A2_s4.json
+[43/45] mnist s1_0.1 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s1_0.5_abl_A2_s4.json
+[44/45] mnist s1_0.5 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+skip (exists): C:\Users\0xRay\Downloads\paper\fedfacs_repro\results\mnist_s2_abl_A2_s4.json
+[45/45] mnist s2 abl_A2 seed=4 done in 0s (elapsed 0.3 min)
+FAILED JOBS: []
+ALL DONE

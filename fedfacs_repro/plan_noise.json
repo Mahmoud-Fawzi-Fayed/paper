@@ -1,0 +1,1 @@
+{"rounds": 100, "epochs": 2, "datasets": ["fmnist", "cifar10"], "scenarios": ["s3"], "methods": ["fedfacs", "abl_nopen", "abl_loss", "random", "powd", "fairfedcs", "greedy"], "seeds": [0, 1, 2], "tag": "", "extra": {"diag_rounds": [5, 25, 50]}}
